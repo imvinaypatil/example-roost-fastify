@@ -11,19 +11,11 @@ const fastify = Fastify({
           url: req.url,
           hostname: req.hostname,
           path: req.path,
-          parameters: req.parameters,
-          "x-request-id": req.headers['x-request-id'],
-          "x-b3-traceid": req.headers['x-b3-traceid'],
-          "x-b3-spanid": req.headers['x-b3-spanid'],
-          "x-b3-parentspanid": req.headers['x-b3-parentspanid'],
-          "x-b3-sampled": req.headers['x-b3-sampled'],
-          "x-b3-flags": req.headers['x-b3-flags'],
-          "x-ot-span-context": req.headers['x-ot-span-context']
+          parameters: req.parameters
         }
       }
     }
-  },
-  genReqId: req => req.headers['x-request-id'] || i++
+  }
 })
 
 fastify.register(fetchPlugin)

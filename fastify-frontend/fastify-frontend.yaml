@@ -12,11 +12,11 @@ spec:
       image: fastify-frontend:latest
       env:
         - name: BACKEND_URL
-          value: "http://backend/"
-      resources:
-        limits:
-          memory: "128Mi"
-          cpu: "200m"
+          value: "http://fastify-backend:3000"
+      # resources:
+      #   limits:
+      #     memory: "128Mi"
+      #     cpu: "200m"
       ports:
         - name: retriever-port
           containerPort: 3000
@@ -39,4 +39,4 @@ spec:
     - name: retriever-port
       port: 3001
       targetPort: 3000
-      nodePort: 3001
+      nodePort: 30001

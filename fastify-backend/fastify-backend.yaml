@@ -38,9 +38,11 @@ metadata:
     owner: zbio
     managed-by: roost
 spec:
+  type: NodePort
   selector:
     app: fastify-backend
   ports:
     - name: fetch-svc-port
       port: 3000
       targetPort: 3000
+      nodePort: 30002
