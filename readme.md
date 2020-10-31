@@ -1,6 +1,6 @@
 # Example fastify for request tracing and collaborating service with roost.io.
 
-In this repo we have multiple services to demonstrate how to handle istio request tracing. This assumes you have a cluster running on gke with istio configured.
+In this repo we have multiple services to demonstrate how to handle request tracing.
 
 The deployment setup is simple
 - there is a serverless function `now-random-number` hosted on now.sh. This function simply returns a random number between 0 - 100 in some json.
