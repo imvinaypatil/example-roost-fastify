@@ -4,45 +4,32 @@ metadata:
   name: fastify-backend
   labels:
     app: fastify-backend
-    owner: zbio
-    managed-by: roost
 spec:
   containers:
     - name: fastify-backend
       image: fastify-backend:latest
       env:
-        - name: STORAGE_DIR
-          value: /app-store
-      volumeMounts:
-        - mountPath: /app-store
-          name: article-storage
-      resources:
-        limits:
-          memory: "128Mi"
-          cpu: "200m"
+        - name: PORT
+          value: '3000'
+        - name: ZIPKIN
+          value: 'zipkin:9411'
       ports:
         - name: fetcher-port
           containerPort: 3000
-      imagePullPolicy: Never
+      imagePullPolicy: IfNotPresent
   terminationGracePeriodSeconds: 0
-  volumes:
-    - name: article-storage
-      emptyDir: {}
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: fastify-backend
-  labels:
-    owner: zbio
-    managed-by: roost
 spec:
   type: NodePort
   selector:
     app: fastify-backend
   ports:
-    - name: fetch-svc-port
+    - name: fetcher-port
       port: 3000
       targetPort: 3000
       nodePort: 30002

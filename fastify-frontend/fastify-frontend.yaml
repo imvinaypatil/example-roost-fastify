@@ -4,8 +4,6 @@ metadata:
   name: fastify-frontend
   labels:
     app: fastify-frontend
-    owner: zbio
-    managed-by: roost
 spec:
   containers:
     - name: fastify-frontend
@@ -13,24 +11,21 @@ spec:
       env:
         - name: BACKEND_URL
           value: "http://fastify-backend:3000"
-      # resources:
-      #   limits:
-      #     memory: "128Mi"
-      #     cpu: "200m"
+        - name: PORT
+          value: '3000'
+        - name: ZIPKIN
+          value: 'zipkin:9411'
       ports:
         - name: retriever-port
           containerPort: 3000
-      imagePullPolicy: Never
+      imagePullPolicy: IfNotPresent
   terminationGracePeriodSeconds: 0
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: fastify-frontend
-  labels:
-    owner: zbio
-    managed-by: roost
+  name: fastify-frontend 
 spec:
   type: NodePort
   selector:

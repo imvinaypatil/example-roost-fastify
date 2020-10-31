@@ -13,6 +13,10 @@
   "dependencies": {
     "fastify": "^2.1.0",
     "fastify-plugin": "^1.5.0",
-    "node-fetch": "^2.3.0"
+    "node-fetch": "^2.3.0",
+    "hyperid": "^2.0.2",
+    "zipkin": "^0.22.0",
+    "zipkin-context-cls": "^0.22.0",
+    "zipkin-lite": "^0.1.1"
   }
 }

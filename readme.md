@@ -10,3 +10,17 @@ The deployment setup is simple
 the backend and frontend folder should be built with docker and tagged and those docker images pushed to a docker repository.
 
 The backend and frontend service are deployed on kubetnetes. They are exposed to each other using standard kuberenetes services. The config for these is in `deploy.yml`. Replace the relevant docker container references in `deploy.yml` with their pushed image counterparts.
+
+##Instructions
+1. Build fastify-backend Docker image 
+2. Build fastify-frontend Docker image
+3. Deploy fastify-backend/fastify-backend.yaml
+4. Deploy fastify-frontend/fastify-frontend.yaml
+5. Deploy deploy-zipkin.yaml
+
+Visit http://roost-utility:30001 to see the Demo ![fastify-frontend](doc/fastify-fronted.png)
+Visit http://roost-utility:30003 to see the distributed traces ![zipkin](doc/zipkin.png)
+
+Use the roost.io collaboration feature to share your services/deployments
+
+![zipkin](doc/resources.png)
